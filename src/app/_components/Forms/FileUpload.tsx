@@ -44,7 +44,7 @@ const FileUpload:React.FC<FileUploadProps> = ({
         <input id="dropzone-file" type="file" className="hidden" onChange={(e)=>{
           if(e?.target?.files)
           {
-            setImage(e.target.files[0] || null)
+            setImage(e.target.files[0] ?? null)
             setAvatarView(true);
           }
 

@@ -9,6 +9,7 @@ import FileUpload from "./FileUpload";
 import { User } from "@prisma/client";
 import { trpc } from "@/lib/trpc";
 import { Button, Input } from "@nextui-org/react";
+import { NextResponse } from "next/server";
 
 export const UploadForm = ({
   user,
@@ -52,7 +53,7 @@ export const UploadForm = ({
             body: base64,
           },
         );
-        const data = await res.json();
+        const data:{success:number} = await res.json();
         setLoading(false);
         if (data.success === 0) {
           toast.dismiss();

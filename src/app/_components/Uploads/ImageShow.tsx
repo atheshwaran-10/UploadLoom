@@ -34,7 +34,7 @@ const ImageShow: React.FC<ImageShowProps> = ({ user }) => {
         ) : (
           images ?
           images.map((image, ind) => (
-            <div className="w-full">
+            <div key={ind} className="w-full">
               <ImageCard index={ind} item={image} key={ind} />
             </div>
           )):(

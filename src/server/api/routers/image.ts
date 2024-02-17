@@ -20,7 +20,7 @@ export const ImageRouter=createTRPCRouter({
   postImage:protectedProcedure
         .input(z.object({userId:z.string(),imgUrl:z.string(),name:z.string()}))
         .mutation(({ctx,input})=>{
-          ctx.db.imagePost.create({
+           ctx.db.imagePost.create({
             data:{
               userId:input.userId,
               imgUrl:input.imgUrl,
