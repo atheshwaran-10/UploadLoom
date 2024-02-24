@@ -42,7 +42,11 @@ const ImageModal = ({children,image}:{children:React.ReactNode,image:ImagePost})
                 <Button color="danger" variant="light" onPress={onClose}>
                   Close
                 </Button>
-                <Button color="primary" onPress={downloadImage}>
+                <Button
+                  className="bg-purple-400/20 font-semibold  text-purple-500 hover:bg-purple-400/20"
+                  color="primary"
+                  onPress={downloadImage}
+                >
                   Download
                 </Button>
               </ModalFooter>

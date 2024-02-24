@@ -27,7 +27,7 @@ export default async function RootLayout({
         <TRPCReactProvider>
           <ToastProvider />
           <UiProvider>
-            <div className="dark">{children}</div>
+            <div >{children}</div>
           </UiProvider>
         </TRPCReactProvider>
       </body>

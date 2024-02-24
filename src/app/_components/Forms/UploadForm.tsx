@@ -14,23 +14,28 @@ import { NextResponse } from "next/server";
 export const UploadForm = ({
   user,
   onClose,
+  appId,
 }: {
   onClose?: () => void;
   user: User;
+  appId: string;
 }) => {
   const [avatarView, setAvatarView] = useState(true);
   const [name, setName] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const utils = trpc.useContext();
+  const createPost = trpc.image.postImage.useMutation({
+    onSuccess: () => {},
+  });
 
   const onSubmit = async (input: File | null) => {
     try {
       if (!input) {
         return;
       }
-      if(name.length>15)
-      {
+
+      if (name.length > 15) {
         toast.error("Name should be maximum length of 15");
         return;
       }
@@ -40,11 +45,12 @@ export const UploadForm = ({
       reader.onload = async () => {
         toast.loading("Uploading...");
         const base64 = reader.result as string;
+
+     
         const ext = input.name.split(".").pop();
-        console.log(user.id);
 
         const res = await fetch(
-          `/api/upload?name=${name}&type=${ext}${"image1"}}`,
+          `/api/upload?name=${name}&type=${ext}&appId=${appId}`,
           {
             method: "POST",
             headers: {
@@ -53,12 +59,15 @@ export const UploadForm = ({
             body: base64,
           },
         );
-        const data:{success:number} = await res.json();
+        const data: {
+          data: string;
+          success: number;
+        } = await res.json();
         setLoading(false);
         if (data.success === 0) {
           toast.dismiss();
           toast.success("Successfully uploaded the image!");
-          utils.image.getAll.invalidate({userId:user.id});
+          utils.image.getAll.invalidate({ userId: user.id, appId: appId });
           if (onClose) onClose();
         }
       };

@@ -1,53 +1,58 @@
-"use client"
+"use client";
 
 import React from "react";
-import Image from "next/image";
-import logo from "~/public/images/logo2.png";
-import { UploadCloud, Code, Palette, GalleryHorizontal } from "lucide-react";
+import {
+  UploadCloud,
+  Code,
+  Palette,
+  GalleryHorizontal,
+  CreditCard,
+  Settings,
+  Home,
+  LucideHome,
+  Files,
+} from "lucide-react";
 import SideBarItem from "./SideBarItem";
 
 const SideBarRoutes = [
   {
-    name: "Uploads",
-    icon: UploadCloud,
-    route: "/uploads",
+    name: "Home",
+    icon: LucideHome,
+    route: "/home",
   },
   {
-    name: "Developer Mode",
+    name: "Files",
+    icon: Files,
+    route: "/home/uploads",
+  },
+  {
+    name: "API",
     icon: Code,
-    route: "/dev",
+    route: "/home/dev",
   },
   {
-    name: "Card Maker",
-    icon: Palette,
-    route: "/card",
+    name: "Plans",
+    icon: CreditCard,
+    route: "/home/plans",
   },
   {
-    name: "Memories",
-    icon: GalleryHorizontal,
-    route: "/memories",
+    name: "Settings",
+    icon: Settings,
+    route: "/home/settings",
   },
 ];
 
-const SideBar = () => {
+const SideBar = ({ appId }: { appId: string }) => {
   return (
     <div className="">
-      <div className="flex flex-row gap-x-4">
-        <Image
-          src={logo}
-          height={80}
-          width={80}
-          className="rounded-full"
-          alt="Logo"
-        />
-      </div>
-      <div className="mt-12">
+      <div className="">
         {SideBarRoutes.map((route, ind) => (
           <SideBarItem
+            appId={appId}
             name={route.name}
             Icon={route.icon}
             route={route.route}
-            key={ind}       
+            key={ind}
           />
         ))}
       </div>

@@ -13,7 +13,7 @@ import UploadForm from "../Forms/UploadForm";
 import { User } from "@prisma/client";
 import { PlusCircle } from "lucide-react";
 
-function UploadModal({ user }: { user: User }) {
+function UploadModal({ user,appId }: { user: User,appId:string }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <>
@@ -36,7 +36,7 @@ function UploadModal({ user }: { user: User }) {
                 Upload Image
               </ModalHeader>
               <ModalBody>
-                <UploadForm user={user} onClose={onClose} />
+                <UploadForm user={user} onClose={onClose} appId={appId} />
               </ModalBody>
             </>
           )}
