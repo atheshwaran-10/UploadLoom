@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import ToastProvider from "./_components/providers/ToastProvider";
 import { TRPCReactProvider } from "@/trpc/react";
 import UiProvider from "./_components/providers/NextUiProvider";
-
+import AuthContext from "@/context/AuthContext";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,15 +22,17 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>
-        <TRPCReactProvider>
-          <ToastProvider />
-          <UiProvider>
-            <div >{children}</div>
-          </UiProvider>
-        </TRPCReactProvider>
-      </body>
-    </html>
+    <AuthContext>
+      <html lang="en">
+        <body className={`font-sans ${inter.variable}`}>
+          <TRPCReactProvider>
+            <ToastProvider />
+            <UiProvider>
+              <div>{children}</div>
+            </UiProvider>
+          </TRPCReactProvider>
+        </body>
+      </html>
+    </AuthContext>
   );
 }

@@ -8,7 +8,9 @@ export default async function RootLayout({
   return (
     <div className="">
       <div>
-        <Header />
+        <Header params={{
+          appId: ""
+        }} />
       </div>
       <div className="h-full ">{children}</div>
     </div>

@@ -9,7 +9,7 @@ export default function Card2({
   items:ImagePost[]
 }) {
   return (
-    <div className="col-span-2 rounded-lg border border-solid p-4 shadow-xl">
+    <div className="col-span-2 rounded-lg border border-solid border-slate-400 p-4 ">
       <div className="">
         <h2 className="text-lg font-semibold">{title}</h2>
       </div>

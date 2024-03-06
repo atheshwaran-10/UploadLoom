@@ -18,23 +18,5 @@ export const ImageRouter = createTRPCRouter({
       });
       return res;
     }),
-  postImage: protectedProcedure
-    .input(
-      z.object({
-        userId: z.string(),
-        imgUrl: z.string(),
-        name: z.string(),
-        appId: z.string(),
-      }),
-    )
-    .mutation(({ ctx, input }) => {
-      return ctx.db.imagePost.create({
-        data: {
-          userId: input.userId,
-          imgUrl: input.imgUrl,
-          name: input.name,
-          appId: Number(input.appId),
-        },
-      });
-    }),
+ 
 });

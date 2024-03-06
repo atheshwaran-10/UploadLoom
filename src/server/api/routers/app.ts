@@ -23,14 +23,32 @@ export const AppRouter = createTRPCRouter({
     }),
   createApp: protectedProcedure
     .input(z.object({ name: z.string(), url: z.optional(z.string()) }))
-    .mutation(({ ctx, input }) => {
-      return ctx.db.app.create({
+    .mutation(async({ ctx, input }) => {
+      const res=await ctx.db.app.create({
         data: {
           createdBy: { connect: { id: ctx.session.user.id } },
           name: input.name,
           url: input?.url,
         },
       });
+      const targetUser=await db.user.findFirst({
+        where:{
+          id:ctx.session.user.id
+        }
+      })
+      if(!targetUser)
+      {
+        return "User not found"
+      }
+      await ctx.db.user.update({
+        where:{
+          id:ctx.session.user.id,
+        },
+        data:{
+          userLimit:targetUser.userLimit-1
+        }
+      })
+      return res;
     }),
   EditApp: protectedProcedure
     .input(

@@ -5,7 +5,12 @@ import { db } from "@/server/db";
 import { getCurrentUser } from "@/hooks/getCurrentUser";
 const page = async ({ params }: { params: { appId: string } }) => {
   const user = await getCurrentUser();
-  if (!user) {
+  const app=await db.app.findFirst({
+    where:{
+      id:Number(params.appId)
+    }
+  })
+  if (!user ||!app) {
     return <div>UnAuthorized</div>;
   }
   const images = await db.imagePost.findMany({
@@ -48,7 +53,7 @@ const page = async ({ params }: { params: { appId: string } }) => {
     <div className="mt-12 mx-5">
       <div className="my-6">
         <h2 className="text-xl font-semibold">
-          🎉 Congratulations, you've got a place to store files!
+          🎉 Congratulations, you have got a place to store files!
         </h2>
         <p className="text-slate-400">lots of files. So many files!</p>
       </div>
@@ -65,7 +70,7 @@ const page = async ({ params }: { params: { appId: string } }) => {
         />
         <Card1
           title={"Usage"}
-          count={`${String(totalFileSize.toFixed(2))}/${user.userLimit} MB`}
+          count={`${String(totalFileSize.toFixed(2))}/${app.appLimit} MB`}
           filter={"Total"}
         />
         <Card1

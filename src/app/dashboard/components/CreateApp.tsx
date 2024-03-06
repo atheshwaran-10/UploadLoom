@@ -20,7 +20,7 @@ function CreateApp({ user }: { user: User }) {
       <div className="mt-4 flex w-full justify-end  pr-4">
         <Button
           onPress={onOpen}
-          className="bg-purple-400/20 font-semibold  text-purple-500 hover:bg-purple-400/20"
+          className="bg-purple-400/20 font-semibold text-purple-500 hover:bg-purple-400/20"
         >
           <div className="flex flex-row gap-x-2">
             <PlusCircle />

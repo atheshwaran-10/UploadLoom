@@ -23,39 +23,57 @@ import {
 import { Input } from "@nextui-org/react";
 import { trpc } from "@/lib/trpc";
 import toast from "react-hot-toast";
+import { Spinner } from "@nextui-org/react";
 
-export default function AppForm({ user,onClose }: { user: User,onClose:()=>void }) {
+export default function AppForm({
+  user,
+  onClose,
+}: {
+  user: User;
+  onClose: () => void;
+}) {
+  const [isLoading, setIsLoading] = useState(false);
+  
 
-  const [isLoading,setIsLoading]=useState(false);
-  const utils=trpc.useContext();
+  const utils = trpc.useContext();
 
   const form = useForm<z.infer<typeof AppSchema>>({
     resolver: zodResolver(AppSchema),
     defaultValues: {
       name: "",
-      url:""
+      url: "",
     },
   });
 
   const createApp = trpc.app.createApp.useMutation({
     onSuccess: () => {
       utils.app.getAll.invalidate();
+      utils.user.getCurrent.invalidate();
+      //refetch();
       toast.success("App created successfully");
       onClose();
     },
   });
 
   function onSubmit(values: z.infer<typeof AppSchema>) {
+    if (!user) {
+      toast.error("Unauthorized");
+      return;
+    }
     setIsLoading(true);
+    console.log(user?.userLimit);
+    if (user?.userLimit === 0) {
+      toast.error("You have reached your App Limit");
+      onClose();
+      return;
+    }
     createApp.mutate({
       name: values.name,
       url: values?.url!,
     });
     form.reset();
     setIsLoading(false);
-    
   }
-  
 
   return (
     <>
@@ -92,13 +110,18 @@ export default function AppForm({ user,onClose }: { user: User,onClose:()=>void 
                 name="url"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>App URL 
+                    <FormLabel>
+                      App URL
                       <span className="text-md ml-2 text-gray-300">
-                      (optional)
+                        (optional)
                       </span>
                     </FormLabel>
                     <FormControl>
-                      <Input required={false} placeholder="uploadloom.vercel.com" {...field} />
+                      <Input
+                        required={false}
+                        placeholder="uploadloom.vercel.com"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -110,7 +133,11 @@ export default function AppForm({ user,onClose }: { user: User,onClose:()=>void 
             <NextButton color="danger" variant="light" onPress={onClose}>
               Close
             </NextButton>
-            <NextButton disabled={isLoading} color="primary" onClick={form.handleSubmit(onSubmit)}>
+            <NextButton
+              disabled={isLoading}
+              color="primary"
+              onClick={form.handleSubmit(onSubmit)}
+            >
               Submit
             </NextButton>
           </ModalFooter>

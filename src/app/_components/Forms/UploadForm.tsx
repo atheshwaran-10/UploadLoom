@@ -25,9 +25,7 @@ export const UploadForm = ({
   const [image, setImage] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const utils = trpc.useContext();
-  const createPost = trpc.image.postImage.useMutation({
-    onSuccess: () => {},
-  });
+ 
 
   const onSubmit = async (input: File | null) => {
     try {
@@ -70,6 +68,12 @@ export const UploadForm = ({
           utils.image.getAll.invalidate({ userId: user.id, appId: appId });
           if (onClose) onClose();
         }
+          if (data.success === 1) {
+            toast.dismiss();
+            toast.error("Your Limit has been exhausted");
+            utils.image.getAll.invalidate({ userId: user.id, appId: appId });
+            if (onClose) onClose();
+          }
       };
       if (onClose) onClose();
     } catch (err) {

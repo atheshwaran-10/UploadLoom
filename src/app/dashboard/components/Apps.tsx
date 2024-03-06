@@ -19,7 +19,7 @@ const Apps = ({user}:{user:User}) => {
       {data && (
         <div className="grid grid-cols-3 gap-8 ">
           {data.map((app, index) => (
-            <div className="w-full">
+            <div className="w-full" key={index}>
               <AppCard key={index} app={app!} index={index} />
             </div>
           ))}

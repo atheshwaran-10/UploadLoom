@@ -64,7 +64,8 @@ model User {
     posts         Post[]
     apps          App[]
     imagePosts    ImagePost[]
-    userLimit     Float   @default(2048)
+    userLimit     Float       @default(3)
+    Purchase      Purchase[]
 }
 
 model VerificationToken {
@@ -99,6 +100,27 @@ model App {
     createdBy User        @relation(fields: [userId], references: [id])
     ImagePost ImagePost[]
     userId    String
+    appLimit     Float       @default(2048)
 
     @@index([name])
+}
+
+model Purchase {
+    id        String   @id @default(uuid()) @map("_id")
+    userId    String
+    appId     String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt()
+    User      User     @relation(fields: [userId], references: [id])
+
+    @@unique([userId, appId])
+}
+
+model StripeCustomer {
+    id               String @id @default(uuid()) @map("_id")
+    userId           String @unique
+    stripeCustomerId String @unique
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }

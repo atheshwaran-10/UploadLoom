@@ -8,6 +8,7 @@ const config = {
     "./src/**/*.{ts,tsx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
+  important:true,
   prefix: "",
   theme: {
     container: {
@@ -74,7 +75,7 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"),nextui()],
+  plugins: [require("tailwindcss-animate"), nextui()],
 } satisfies Config;
 
 export default config

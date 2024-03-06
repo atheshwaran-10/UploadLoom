@@ -1,17 +1,17 @@
 import React from "react";
 import API from "./API";
 import { getCurrentUser } from "@/hooks/getCurrentUser";
+import Header from "./Header";
 import Snippets from "./Snippets";
-import { Snippet } from "@nextui-org/react";
-const page = async () => {
+const page = async ({params}:{params:{appId:string}}) => {
   const user = await getCurrentUser();
   return (
-    <div className="flex h-screen flex-col items-center justify-center gap-y-5">
-      <div className="rounded-lg border border-solid p-2">
-        <div className="text-center text-xl font-semibold ">API Support</div>
-        <API user={user!} />
+    <div className=" gap-y-5">
+      <Header />
+      <div className="m-12 w-1/2 rounded-lg border border-solid p-2">
+        <API user={user!} appId={params.appId} />
       </div>
-      <div>
+      <div className="m-12  rounded-lg border border-solid">
         <Snippets />
       </div>
     </div>
