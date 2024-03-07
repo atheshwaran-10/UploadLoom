@@ -5,12 +5,12 @@ import { db } from "@/server/db";
 import { getCurrentUser } from "@/hooks/getCurrentUser";
 const page = async ({ params }: { params: { appId: string } }) => {
   const user = await getCurrentUser();
-  const app=await db.app.findFirst({
-    where:{
-      id:Number(params.appId)
-    }
-  })
-  if (!user ||!app) {
+  const app = await db.app.findFirst({
+    where: {
+      id: Number(params.appId),
+    },
+  });
+  if (!user || !app) {
     return <div>UnAuthorized</div>;
   }
   const images = await db.imagePost.findMany({
@@ -25,11 +25,10 @@ const page = async ({ params }: { params: { appId: string } }) => {
     .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
     .slice(0, 5);
 
-
-   const largestFiles = images
-     .slice()
-     .sort((a, b) => b.fileSize - a.fileSize)
-     .slice(0, 5);
+  const largestFiles = images
+    .slice()
+    .sort((a, b) => b.fileSize - a.fileSize)
+    .slice(0, 5);
 
   const currentMonthImages = images.filter((image) => {
     const createdAt = new Date(image.createdAt);
@@ -50,14 +49,14 @@ const page = async ({ params }: { params: { appId: string } }) => {
   }, 0);
 
   return (
-    <div className="mt-12 mx-5">
+    <div className="mx-5 mt-12">
       <div className="my-6">
         <h2 className="text-xl font-semibold">
           🎉 Congratulations, you have got a place to store files!
         </h2>
         <p className="text-slate-400">lots of files. So many files!</p>
       </div>
-      <div className="grid grid-cols-4 gap-5 px-4">
+      <div className="grid grid-cols-1 gap-5 px-4 sm:grid-cols-1 md:grid-cols-4 2xl:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4">
         <Card1
           title={"Total Files"}
           count={String(images.length)}

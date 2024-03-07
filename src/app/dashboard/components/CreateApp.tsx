@@ -17,14 +17,14 @@ function CreateApp({ user }: { user: User }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <>
-      <div className="mt-4 flex w-full justify-end  pr-4">
+      <div className=" flex w-full justify-end ">
         <Button
           onPress={onOpen}
           className="bg-purple-400/20 font-semibold text-purple-500 hover:bg-purple-400/20"
         >
           <div className="flex flex-row gap-x-2">
             <PlusCircle />
-            <h2 className="mt-[2px]">Create App</h2>
+            <h2 className="">Create App</h2>
           </div>
         </Button>
       </div>

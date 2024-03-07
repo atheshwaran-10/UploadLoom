@@ -42,14 +42,14 @@ const SideBarRoutes = [
   },
 ];
 
-const SideBar = ({ appId }: { appId: string }) => {
+const MobileSideBar = ({ appId }: { appId: string }) => {
   return (
-    <div className="">
-      <div className="">
+    <div className=" md:hidden">
+      <div className="flex flex-row gap-x-4">
         {SideBarRoutes.map((route, ind) => (
           <SideBarItem
+            isMobile={true}
             appId={appId}
-            isMobile={false}
             name={route.name}
             Icon={route.icon}
             route={route.route}
@@ -61,4 +61,4 @@ const SideBar = ({ appId }: { appId: string }) => {
   );
 };
 
-export default SideBar;
+export default MobileSideBar;

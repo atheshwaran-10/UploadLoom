@@ -29,7 +29,7 @@ const UserHeader = ({ user, apps }: { user?: User; apps: App[] }) => {
   const currentAppsUsed = 3 - (user?.userLimit ?? 0);
 
   return (
-    <div className="mx-20 flex flex-row justify-between">
+    <div className="mx-2 flex flex-row justify-between md:mx-20 lg:mx-20 xl:mx-20 2xl:mx-20">
       <div className="mt-4 flex">
         <span
           className="text-2xl font-bold  hover:cursor-pointer"
@@ -64,7 +64,7 @@ const UserHeader = ({ user, apps }: { user?: User; apps: App[] }) => {
                   <h2 className="text-md text-slate-800">Email</h2>
                   <div className="flex flex-row gap-x-4">
                     <h2 className="text-sm text-slate-800">{user?.email}</h2>
-                    <Chip color="primary" size="sm">
+                    <Chip color="primary" size="sm" className=" bg-purple-500">
                       Primary
                     </Chip>
                   </div>
@@ -74,8 +74,15 @@ const UserHeader = ({ user, apps }: { user?: User; apps: App[] }) => {
                     Apps {currentAppsUsed}/3
                   </h2>
                   <div className="mt-4 flex flex-col gap-y-4">
-                    {apps.map((app,index) => (
-                      <div key={index} className="flex flex-row gap-x-5 cursor-pointer hover:bg-slate-200 p-3 rounded-lg" onClick={()=>{router.push(`/dashboard/${app.id}/home`);onClose()}} >
+                    {apps.map((app, index) => (
+                      <div
+                        key={index}
+                        className="flex cursor-pointer flex-row gap-x-5 rounded-lg p-3 hover:bg-slate-200"
+                        onClick={() => {
+                          router.push(`/dashboard/${app.id}/home`);
+                          onClose();
+                        }}
+                      >
                         <Avatar
                           isBordered
                           size="sm"
@@ -84,7 +91,9 @@ const UserHeader = ({ user, apps }: { user?: User; apps: App[] }) => {
                           name={app?.name.substring(0, 1)}
                         />
                         <h2>{app.name}</h2>
-                        <h2 className="ml-auto text-xs text-neutral-500">{(app.appLimit/1024).toFixed(2)} GB</h2>
+                        <h2 className="ml-auto text-xs text-neutral-500">
+                          {(app.appLimit / 1024).toFixed(2)} GB
+                        </h2>
                       </div>
                     ))}
                   </div>

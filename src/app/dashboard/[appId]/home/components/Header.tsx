@@ -16,14 +16,14 @@ const Header = ({ app, allApps }: { app: App; allApps: App[] }) => {
     <div>
       <Dropdown backdrop="blur">
         <DropdownTrigger>
-          <div className="m-4 flex cursor-pointer flex-row gap-x-3">
+          <div className="mt-4 mr-2 flex cursor-pointer flex-row gap-x-3">
             <Avatar
               isBordered
               radius="sm"
               className="bg-purple-500 text-xl font-bold text-white"
               name={app?.name.substring(0, 1)}
             />
-            <p className="text-md mt-2 font-bold text-slate-800">{app?.name}</p>
+            <p className="text-md mt-2 font-bold text-slate-800 block md:block xl:block lg:block 2xl:block sm:hidden max-sm:hidden">{app?.name}</p>
           </div>
         </DropdownTrigger>
         <DropdownMenu aria-label="Static Actions">

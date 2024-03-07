@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { App, User } from "@prisma/client";
 import React, { useState } from "react";
 import Pro from "./Pro";
@@ -7,8 +7,7 @@ import Elite from "./Elite";
 import toast from "react-hot-toast";
 import axios from "axios";
 
-export default function Card2({ user,app }: { user: User,app:App }) {
- 
+export default function Card2({ user, app }: { user: User; app: App }) {
   const appLimit = app.appLimit;
   const userTier =
     appLimit === 2048
@@ -27,10 +26,8 @@ export default function Card2({ user,app }: { user: User,app:App }) {
           ? "Tailored for heavy users, ample space"
           : "Basic access for temporary users or guests";
 
-  
-
   return (
-    <div className="flex flex-row justify-between rounded-lg border border-solid border-slate-400">
+    <div className="flex flex-col justify-between rounded-lg border border-solid border-slate-400 sm:flex-col md:flex-row lg:flex-row xl:flex-row 2xl:flex-row">
       <div className="m-6">
         <div className="text-xl font-semibold">Available Plans</div>
         <div>View available plans and change subscription</div>

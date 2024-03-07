@@ -8,10 +8,10 @@ const page = async ({params}:{params:{appId:string}}) => {
   return (
     <div className=" gap-y-5">
       <Header />
-      <div className="m-12 w-1/2 rounded-lg border border-solid p-2">
+      <div className="m-6  rounded-lg border border-solid p-2">
         <API user={user!} appId={params.appId} />
       </div>
-      <div className="m-12  rounded-lg border border-solid">
+      <div className="m-6  rounded-lg border border-solid hidden md:block lg:block xl:block 2xl:block">
         <Snippets />
       </div>
     </div>

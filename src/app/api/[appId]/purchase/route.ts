@@ -32,17 +32,13 @@ export async function POST(
       return new NextResponse("Already purchased", { status: 400 });
     }
 
-
+  
     const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [
       {
         quantity: 1,
         price_data: {
           currency: "INR",
-          product_data: {
-            name: "Upload Loom Pro Membership",
-            description:
-              "Geared towards more active users, the Pro tier provides a higher data limit of 5GB. This tier is suitable for individuals or small businesses requiring additional storage and features beyond the basic level",
-          },
+          product: "prod_Ph6Y7WUDJmxoRf",
           unit_amount: Math.round(200! * 100),
         },
       },

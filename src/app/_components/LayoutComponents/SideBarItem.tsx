@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { LucideIcon, Rotate3D } from "lucide-react";
 import React from "react";
 import { cn } from "@/lib/utils";
@@ -10,14 +10,21 @@ interface SideBarItemProps {
   name: string;
   Icon: LucideIcon;
   route: string;
-  appId:string
+  appId: string;
+  isMobile: boolean;
 }
 
-const SideBarItem: React.FC<SideBarItemProps> = ({ name, Icon, route,appId }) => {
+const SideBarItem: React.FC<SideBarItemProps> = ({
+  name,
+  Icon,
+  route,
+  appId,
+  isMobile,
+}) => {
   const { title, setTitle } = useHeaderTitle();
-  const pathname=usePathname();
+  const pathname = usePathname();
   const currentPath = `/dashboard/${appId}${route}`;
-  console.log(pathname)
+  console.log(pathname);
 
   return (
     <Link href={`/dashboard/${appId}${route}`}>
@@ -36,21 +43,16 @@ const SideBarItem: React.FC<SideBarItemProps> = ({ name, Icon, route,appId }) =>
             })}
             size={20}
           />
-          <div
-            className={cn("text-md font-semibold text-slate-600", {
-              "text-purple-600": currentPath === pathname,
-            })}
-          >
-            {name}
-          </div>
+          {!isMobile && (
+            <div
+              className={cn("text-md font-semibold text-slate-600", {
+                "text-purple-600": currentPath === pathname,
+              })}
+            >
+              {name}
+            </div>
+          )}
         </div>
-        {currentPath === pathname && (
-          <div
-            className={cn("h-6 w-1  rounded-full bg-purple-600", {
-              "text-purple-600": currentPath === pathname,
-            })}
-          />
-        )}
       </div>
     </Link>
   );

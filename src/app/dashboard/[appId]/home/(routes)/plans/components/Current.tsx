@@ -21,7 +21,7 @@ export default function Card1({ user,app }: { user: User,app:App }) {
           : "Basic access for temporary users or guests";
 
   return (
-    <div className="flex flex-row justify-between rounded-lg border border-solid border-slate-400">
+    <div className="flex flex-col justify-between rounded-lg border border-solid border-slate-400 sm:flex-col md:flex-row lg:flex-row xl:flex-row 2xl:flex-row">
       <div className="m-6">
         <div className="text-xl font-semibold">Current Plan</div>
         <div>Manage and view your current plan</div>

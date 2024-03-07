@@ -17,11 +17,11 @@ const Elite = ({ user,app }: { user: User,app:App }) => {
               Current Plan
             </Button>
           ) : (
-            <Button
-              className="bg-purple-400/20 font-semibold text-purple-500 hover:bg-purple-400/20"
-            >
-              Schedule a call
-            </Button>
+            <a href="mailto:athesh85@gmail.com">
+              <Button className="mx-2 bg-purple-400/20 font-semibold text-purple-500 hover:bg-purple-400/20">
+                Schedule a call
+              </Button>
+            </a>
           )}
         </div>
         <div>Suitable for demanding tasks and large-scale projects!</div>

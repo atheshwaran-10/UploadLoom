@@ -4,7 +4,6 @@ import ToastProvider from "./_components/providers/ToastProvider";
 import { TRPCReactProvider } from "@/trpc/react";
 import UiProvider from "./_components/providers/NextUiProvider";
 import AuthContext from "@/context/AuthContext";
-
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -28,7 +27,9 @@ export default async function RootLayout({
           <TRPCReactProvider>
             <ToastProvider />
             <UiProvider>
-              <div>{children}</div>
+              <div>
+                {children}
+              </div>
             </UiProvider>
           </TRPCReactProvider>
         </body>
