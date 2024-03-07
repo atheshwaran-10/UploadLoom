@@ -99,7 +99,10 @@ export default function HeroSection({ signedIn }: { signedIn: boolean }) {
               </Link>
             )}
 
-            <Link href="https://github.com/dhravya/dump.place" className="z-50">
+            <Link
+              href="https://github.com/atheshwaran-10/uploadLoom"
+              className="z-50"
+            >
               <Button variant="outline" className="flex gap-2 bg-transparent">
                 <svg className="h-6 w-6" viewBox="0 0 128 128">
                   <g fill="#000000">
