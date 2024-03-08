@@ -4,6 +4,7 @@ import main from "./Hero/hero.module.css";
 import LandingHeader from "./_components/Header/LandingHeader";
 import { cn } from "@/lib/utils";
 import Pricing from "./pricing/Pricing";
+import FAQ from "./FAQ";
 
 export default async function HomePage() {
   const auth = await getServerAuthSession();
@@ -26,6 +27,11 @@ export default async function HomePage() {
       </div>
       <div className="-mt-16 w-full">
         <Pricing />
+      </div>
+      <div className="flex justify-center py-6">
+        <div className="w-1/2">
+          <FAQ />
+        </div>
       </div>
       <div id="footer" className="text-md m-4 mt-8  text-center font-semibold">
         <p>&copy; UploadLoom 2024</p>
