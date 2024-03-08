@@ -42,7 +42,7 @@ export default function App() {
             UploadLoom is an Image hosting Platform but mainly it concerns for
             the devs,as it can be useful for them to host their assets online
             and can use it 24/7.UploadLoom makes the productivity of your
-            developement a much easier as you don't need care about assets
+            developement a much easier as you don&apos;t need care about assets
             storage in your app.
           </AccordionItem>
           <AccordionItem
@@ -52,7 +52,7 @@ export default function App() {
 "
           >
             An Integrated API support for your App will be provided along with a
-            API_KEY and APP_ID to help you to host your app's Image Assets
+            API_KEY and APP_ID to help you to host your app&apos;s Image Assets
             online.
           </AccordionItem>
           <AccordionItem
@@ -69,8 +69,8 @@ export default function App() {
 How much Storage is available for each app?
 "
           >
-            For each app,you'll be provided with a 2GB Limit which can be also
-            increased by Pro and Elite Membership.
+            For each app,you&apos;ll be provided with a 2GB Limit which can be
+            also increased by Pro and Elite Membership.
           </AccordionItem>
           <AccordionItem
             key="5"
