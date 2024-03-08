@@ -37,6 +37,7 @@ export async function POST(
             name: "Upload Loom Pro Membership",
             description:
               "Geared towards more active users, the Pro tier provides a higher data limit of 5GB. ",
+            images:["https://cdn.discordapp.com/attachments/1203013470300143616/1215671962349600768/Logo.png?ex=65fd99bd&is=65eb24bd&hm=d5759c91a11736f4aa2717f1d6aca51c39e1d49b50f0611aed44d0fb048cc508&"]
           },
           unit_amount: Math.round(200! * 100),
         },
@@ -55,7 +56,6 @@ export async function POST(
     if (!stripeCustomer) {
       const customer = await stripe.customers.create({
         email: user.email,
-        name: user.name,
       });
 
       stripeCustomer = await db.stripeCustomer.create({
