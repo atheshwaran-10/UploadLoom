@@ -1,11 +1,13 @@
 import { getServerAuthSession } from "@/server/auth";
 import HeroSection from "./Hero";
+import main from "./Hero/hero.module.css";
 import LandingHeader from "./_components/Header/LandingHeader";
+import { cn } from "@/lib/utils";
 export default async function HomePage() {
   const auth = await getServerAuthSession();
 
   return (
-    <div>
+    <div className={cn(main.main_div)}>
       <div>
         <LandingHeader signedIn={auth?.user.name ? true : false} />
       </div>
