@@ -10,35 +10,34 @@ export async function POST(
 ) {
   try {
     const user = await getCurrentUser();
-    const app=await db.app.findFirst(
-     { 
-      where:{
-        id:Number(params.appId,)
-      }
-    }
-    )
+    const app = await db.app.findFirst({
+      where: {
+        id: Number(params.appId),
+      },
+    });
 
     if (!user || !user.id || !user.email) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-   
+    if (!app) {
+      return new NextResponse("App Not Found", { status: 401 });
+    }
 
-   if (!app) {
-     return new NextResponse("App Not Found", { status: 401 });
-   }
-
-    if (app.appLimit===5120) {
+    if (app.appLimit === 5120) {
       return new NextResponse("Already purchased", { status: 400 });
     }
 
-  
     const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [
       {
         quantity: 1,
         price_data: {
           currency: "INR",
-          product: "prod_Ph6Y7WUDJmxoRf",
+          product_data: {
+            name: "Upload Loom Pro Membership",
+            description:
+              "Geared towards more active users, the Pro tier provides a higher data limit of 5GB. ",
+          },
           unit_amount: Math.round(200! * 100),
         },
       },
@@ -56,6 +55,7 @@ export async function POST(
     if (!stripeCustomer) {
       const customer = await stripe.customers.create({
         email: user.email,
+        name: user.name,
       });
 
       stripeCustomer = await db.stripeCustomer.create({
@@ -71,11 +71,11 @@ export async function POST(
       line_items,
       mode: "payment",
       success_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/${params.appId}/home?success=1`,
-      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/courses/${params.appId}/home?canceled=1`,
+      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/${params.appId}/home?canceled=1`,
       metadata: {
         appId: params.appId,
         userId: user.id,
-        userEmail:user.email
+        userEmail: user.email,
       },
     });
 
