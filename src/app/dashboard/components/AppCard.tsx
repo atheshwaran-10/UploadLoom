@@ -46,7 +46,7 @@ const AppCard = ({ app, index }: { app: props; index: number }) => {
               />
             </div>
           </CardBody>
-          <CardFooter className="justify-between text-left text-small">
+          <CardFooter className="justify-between text-left text-small bg-[#f3f3f3]">
             <div className="">
               <b className="text-left text-lg">{app.name}</b>
               <p className="text-default-500">{app.url || "No URL defined"}</p>

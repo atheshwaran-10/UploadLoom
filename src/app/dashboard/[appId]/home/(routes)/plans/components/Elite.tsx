@@ -1,7 +1,7 @@
 import { App, User } from "@prisma/client";
 import React from "react";
 import { Button } from "@/components/ui/button";
-const Elite = ({ user,app }: { user: User,app:App }) => {
+const Elite = ({ user, app }: { user: User; app: App }) => {
   const isCurrentPlan = app.appLimit > 5120;
   return (
     <div>
@@ -17,7 +17,7 @@ const Elite = ({ user,app }: { user: User,app:App }) => {
               Current Plan
             </Button>
           ) : (
-            <a href="mailto:athesh85@gmail.com">
+            <a href="https://cal.com/atheshwaran" target="__blank">
               <Button className="mx-2 bg-purple-400/20 font-semibold text-purple-500 hover:bg-purple-400/20">
                 Schedule a call
               </Button>

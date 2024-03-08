@@ -4,7 +4,7 @@
  
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background:#f3f3f3;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -90,4 +90,8 @@
   -webkit-border-radius: 10px;
   border-radius: 10px;
   background: #e2e2e2;
+}
+
+body{
+  background: #f3f3ff;
 }

@@ -69,9 +69,27 @@
   white-space: nowrap;
 }
 
-
+/* 
 .main_div{
 background: rgb(197, 63, 251);
   background: radial-gradient(circle, rgba(197, 63, 251, 1) 0%, rgba(255, 255, 255, 1) 36%, rgba(255, 255, 255, 1) 71%);
+} */
+
+.main_div {
+  width:100%;
+  height: 100px;
+  background: linear-gradient(to bottom, #d2d0d1 40%, #cf4cfe 50%);
+  filter: blur(80px);
+  position: absolute;
+  flex: 1;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+
+.app_container {
+  background: #f3f3ff;
+  width: 100%;
+  height: 75vh;
 }
 

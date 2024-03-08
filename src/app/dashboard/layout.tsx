@@ -13,13 +13,13 @@ export default async function RootLayout({
     return redirect("/");
   }
   return (
-    <div className="">
+    <div className="bg-[#f3f3f3]">
       <div>
         <Header params={{
           appId: ""
         }} />
       </div>
-      <div className="h-full ">{children}</div>
+      <div className="h-screen ">{children}</div>
     </div>
   );
 }
