@@ -29,7 +29,7 @@ export default async function HomePage() {
         <Pricing />
       </div>
       <div className="flex justify-center py-6">
-        <div className="w-1/2">
+        <div className="w-full sm:w-full md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2">
           <FAQ />
         </div>
       </div>
