@@ -12,7 +12,7 @@ export default function App() {
   return (
     <motion.div
       initial="hidden"
-      className="w-full"
+      className="w-full p-4"
       ref={ref}
       animate={isInView ? "show" : "hidden"}
       viewport={{ once: true }}
