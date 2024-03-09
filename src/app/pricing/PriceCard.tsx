@@ -56,7 +56,7 @@ const PriceCard: React.FC<PriceCardProps> = ({
         <h2 className="mb-6">
           {!isCustom ? (
             <div>
-              <span className="text-4xl font-bold">${price}</span>
+              <span className="text-4xl font-bold">₹{price}</span>
               <span className="text-sm font-semibold text-slate-500">
                 /month
               </span>
