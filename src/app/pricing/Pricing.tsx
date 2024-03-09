@@ -21,7 +21,7 @@ const plans: PriceCardProps[] = [
   {
     title: "5GB App",
     desc: "For those with more than 2 gigs of files",
-    price: "10",
+    price: "200",
     isCustom: false,
     buttonText: "Upgrade Now",
     buttonRoute: "/dashboard",
