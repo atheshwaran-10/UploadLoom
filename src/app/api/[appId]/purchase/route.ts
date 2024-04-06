@@ -37,7 +37,7 @@ export async function POST(
             name: "Upload Loom Pro Membership",
             description:
               "Geared towards more active users, the Pro tier provides a higher data limit of 5GB. ",
-            images:["https://cdn.discordapp.com/attachments/1203013470300143616/1215671962349600768/Logo.png?ex=65fd99bd&is=65eb24bd&hm=d5759c91a11736f4aa2717f1d6aca51c39e1d49b50f0611aed44d0fb048cc508&"]
+            images:["https://cdn.discordapp.com/attachments/1203013470300143616/1226024428232642600/logo.png?ex=6623433a&is=6610ce3a&hm=e35f02ea4b26f4cb2c299fe85cfd31b3ca3bf7f91000c959bdcc6b172419166f&"]
           },
           unit_amount: Math.round(200! * 100),
         },
