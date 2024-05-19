@@ -1,0 +1,50 @@
+package demo;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebElement;
+
+public class ExampleSelenium {
+	public static void main(String args[]) {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\HARI\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+		ChromeDriver driver = new ChromeDriver();
+		driver.get("https://www.amazon.in");
+		WebElement search_box = driver.findElement(By.id("twotabsearchtextbox"));
+		search_box.sendKeys("Laptops");
+		search_box.submit();
+	}
+
+}
+
+
+
+
+
+
+import openpyxl
+
+def test_word_in_excel():
+    workbook = openpyxl.load_workbook("bk.xlsx")
+    sheet = workbook.active
+    l = ["iron", "mani"]
+    
+    assert any(
+        word.lower() in str(j.value).lower() 
+        for i in sheet 
+        for j in i 
+        for word in l
+    ), "None of the words were found in the Excel file."
+
+
+
+
+
+
+
+
+from docx import Document
+def testword():
+    a=Document("athesh.docx")
+    l=["iron","mani"]
+    for i in l:
+        assert any(i.lower() in para.text.lower() for para in a.paragraphs),f"keyword not found"
